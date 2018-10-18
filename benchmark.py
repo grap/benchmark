@@ -12,7 +12,6 @@ _SALE_ORDER_LINE_QTY = [100, 200, 300, 400, 500]
 
 
 VERSIONS = {
-    # 8:  {"url": ""},
     10: {"url": "http://instance_mag_10.dy", "database": "benchmark"},
     12: {"url": "http://instance_grap_12.dy/", "database": "benchmark"},
 }
@@ -67,12 +66,12 @@ def _invoice_order(order, version=False):
 
 ###############################################################################
 # Logging function
-def _log_result(action, durations, line_qty):
+def _log_result(durations, line_qty):
     print (
         "- {} lines. Duration (global): {:6.2f}"
         ". Duration (Per Line): {:6.3f}").format(
-            str(line_qty).zfill(5)),
-        numpy.mean(durations), numpy.mean(durations) / line_qty)
+            str(line_qty).zfill(5),
+            numpy.mean(durations), numpy.mean(durations) / line_qty)
 
 ###############################################################################
 # Main Script

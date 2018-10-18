@@ -7,8 +7,8 @@ import random
 import erppeek
 
 
-_QTY_FOR_AVERAGE = 5
-_SALE_ORDER_LINE_QTY = [100, 200, 300, 400, 500]
+_QTY_FOR_AVERAGE = 3
+_SALE_ORDER_LINE_QTY = [1, 2, 5, 10, 20, 50, 100, 200]
 
 
 VERSIONS = {
@@ -84,7 +84,9 @@ for version in VERSIONS.keys():
     partner = odoo.ResPartner.browse([('customer', '=', True)])[0]
     products_data = odoo.ProductProduct.read([
         ('sale_ok', '=', True),
-        ('type', '=', 'product')], ['id', 'name'])
+        ('type', '=', 'product'),
+        ('invoice_policy', '=', 'order'),
+    ], ['id', 'name'])
 
     # Sale Order Creation
     print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
